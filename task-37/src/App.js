@@ -7,7 +7,9 @@ class App extends Component {
         firstName: "",
         email: "",
         message: "",
-        nativeLanguage: "",
+        nativeLang: "",
+        agreement: false,
+        gender:"",
     };
 
     handleValue = (e) => {
@@ -22,8 +24,14 @@ class App extends Component {
         }
     };
 
+    handleChecked = (e) => {
+        this.setState({
+            [e.target.name]: e.target.checked,
+        });
+    };
+
     render() {
-        const { firstName, email, message, nativeLanguage } = this.state;
+        const { firstName, email, message, nativeLang, agreement } = this.state;
         return (
             <div className="container">
                 <form>
@@ -63,12 +71,12 @@ class App extends Component {
                         />
                     </div>
                     <div>
-                        <label htmlFor="nativeLanguage">Native Language</label>
+                        <label htmlFor="nativeLang">Native Language</label>
                         <select
                             className="form-control"
-                            name="nativeLanguage"
-                            id="nativeLanguage"
-                            value={nativeLanguage}
+                            name="nativeLang"
+                            id="nativeLang"
+                            value={nativeLang}
                             onChange={this.handleValue}
                         >
                             <option value="">Select a language</option>
@@ -76,6 +84,27 @@ class App extends Component {
                             <option value="ru">Russian</option>
                             <option value="eng">English</option>
                         </select>
+                    </div>
+                    <div>
+                    <div className="form-check">
+                        <input
+                            className="form-check-input"
+                            type="checkbox"
+                            name="agreement"
+                            id="agreement"
+                            checked={agreement}
+                            onChange={this.handleChecked}
+                        />
+                        <label className="form-check-label" htmlFor="agreement">
+                            Agreement
+                        </label>
+                    </div>
+                    </div>
+                    <div>
+                        <label htmlFor="gender">Gender</label><br />
+                            <input type="radio" name="gender" id="gender" value="male" onChange={this.handleValue} />Male
+                            <input type="radio" name="gender" id="gender" value="female" onChange={this.handleValue} />Female
+
                     </div>
                 </form>
             </div>

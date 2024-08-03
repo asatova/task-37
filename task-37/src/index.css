@@ -26,3 +26,6 @@ label{
   width: 50% !important;
   margin: auto;
 }
+.form-check .form-check-input{
+  float: none!important;
+}
